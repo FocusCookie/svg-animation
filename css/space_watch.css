@@ -1,0 +1,12 @@
+#ray {
+  fill: #fff;
+  transform: translate(25%, 53%) scale(0.1);
+  animation: scale_from_left 2s ease-in 1s infinite;
+}
+
+@keyframes scale_from_left {
+  100% {
+    fill: #64fcd9;
+    transform: translateY(0px) scale(1);
+  }
+}

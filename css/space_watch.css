@@ -66,17 +66,7 @@
   --animation-duration: 2.4s;
   --animation-delay: 111ms;
 }
-
-#planet_s {
-  opacity: 0;
-}
-#planet_m {
-  opacity: 0;
-}
-#planet_xl {
-  opacity: 0;
-}
-#satelite {
+ls #planet_s {
   opacity: 0;
 }
 
@@ -84,6 +74,93 @@
   transform-origin: 30% 50%;
   opacity: 0;
   animation: blink 750ms ease-in-out 1s 5 alternate both;
+}
+
+#planet_s {
+  --animation-delay: 125ms;
+  --x-offset-1: 0.012rem;
+  --x-offset-2: -0.03rem;
+  --y-offset-1: 0.022rem;
+  --y-offset-2: -0.012rem;
+
+  transform-origin: 25% center;
+  animation: scale-bounce 1s ease-in-out calc(4.5s + var(--animation-delay)) 1
+      normal both,
+    y-wobble 2s ease-in-out calc(6.5s + var(--animation-delay)) infinite
+      alternate forwards;
+}
+.highlight {
+  animation: blink calc(8s + var(--animation-duration)) ease-in-out
+    calc(4.5s + var(--animation-delay)) infinite alternate both;
+}
+.highlight:nth-child(2) {
+  --animation-duration: 2.25s;
+  --animation-delay: 1s;
+}
+.highlight:nth-child(2) {
+  --animation-duration: 1.85s;
+  --animation-delay: 750ms;
+}
+.highlight:nth-child(3) {
+  --animation-duration: 2.5s;
+  --animation-delay: 1.1s;
+}
+.highlight:nth-child(4) {
+  --animation-duration: 1.9s;
+  --animation-delay: 1.5s;
+}
+.highlight:nth-child(5) {
+  --animation-duration: 2.1s;
+  --animation-delay: 333ms;
+}
+.highlight:nth-child(6) {
+  --animation-duration: 3s;
+  --animation-delay: 122ms;
+}
+.highlight:nth-child(7) {
+  --animation-duration: 2s;
+  --animation-delay: 222ms;
+}
+.highlight:nth-child(8) {
+  --animation-duration: 2.4s;
+  --animation-delay: 111ms;
+}
+
+#planet_m {
+  --animation-delay: 225ms;
+  transform-origin: 25% center;
+  animation: scale-bounce 2s ease-in-out calc(4.5s + var(--animation-delay)) 1
+      normal both,
+    y-wobble 4s ease-in-out calc(6.5s + var(--animation-delay)) infinite
+      alternate forwards;
+}
+
+#planet_xl {
+  --animation-delay: 333ms;
+  --x-offset-1: -0.033rem;
+  --x-offset-2: 0.04rem;
+  --y-offset-1: -0.074rem;
+  --y-offset-2: 0.1rem;
+
+  transform-origin: 25% center;
+  animation: scale-bounce 2s ease-in-out calc(4.5s + var(--animation-delay)) 1
+      normal both,
+    y-wobble 2.5s ease-in-out calc(6.5s + var(--animation-delay)) infinite
+      alternate forwards;
+}
+
+#satelite {
+  --animation-delay: 225ms;
+  --x-offset-1: -0.163rem;
+  --x-offset-2: 0.174rem;
+  --y-offset-1: 0.14rem;
+  --y-offset-2: -0.092em;
+
+  transform-origin: 25% center;
+  animation: scale-bounce 2s ease-in-out calc(4.5s + var(--animation-delay)) 1
+      normal both,
+    y-wobble 4s ease-in-out calc(6.5s + var(--animation-delay)) infinite
+      alternate forwards;
 }
 
 @keyframes blink {
@@ -115,11 +192,33 @@
 
 @keyframes y-wobble {
   0% {
-    opacity: 1;
     transform: translate(var(--x-offset-1), var(--y-offset-1));
   }
   100% {
-    opacity: 1;
     transform: translate(var(--x-offset-2), var(--y-offset-2));
+  }
+}
+
+@keyframes scale-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

@@ -1,12 +1,125 @@
-#ray {
-  fill: #fff;
-  transform: translate(25%, 53%) scale(0.1);
-  animation: scale_from_left 2s ease-in 1s infinite;
+:root {
+  --x-offset-1: -0.053rem;
+  --x-offset-2: -0.07rem;
+  --y-offset-1: 0.1rem;
+  --y-offset-2: -0.15rem;
+  --animation-delay: 200ms;
+  --animation-duration: 2s;
+}
+
+#display_ray {
+  opacity: 0;
+  animation: scale_from_left 250ms cubic-bezier(1, 0, 0, 1) 4.5s 1 both;
+}
+.ray_outline {
+  animation: fadein 7.5s 3s ease-in-out 1 normal both,
+    y-wobble 2s ease-in-out calc(4.5s + var(--animation-delay)) infinite
+      alternate forwards;
+}
+.ray_outline:nth-child(2) {
+  --animation-delay: 125ms;
+}
+.ray_outline:nth-child(3) {
+  --animation-delay: 175ms;
+}
+.ray_outline:nth-child(4) {
+  --animation-delay: 200ms;
+}
+.ray_outline:nth-child(5) {
+  --animation-delay: 244ms;
+}
+
+.star {
+  opacity: 0;
+  animation: blink var(--animation-duration) ease-in-out
+    calc(4.5s + var(--animation-delay)) infinite alternate both;
+}
+.star:nth-child(2) {
+  --animation-duration: 2.25s;
+  --animation-delay: 1s;
+}
+.star:nth-child(2) {
+  --animation-duration: 1.85s;
+  --animation-delay: 750ms;
+}
+.star:nth-child(3) {
+  --animation-duration: 2.5s;
+  --animation-delay: 1.1s;
+}
+.star:nth-child(4) {
+  --animation-duration: 1.9s;
+  --animation-delay: 1.5s;
+}
+.star:nth-child(5) {
+  --animation-duration: 2.1s;
+  --animation-delay: 333ms;
+}
+.star:nth-child(6) {
+  --animation-duration: 3s;
+  --animation-delay: 122ms;
+}
+.star:nth-child(7) {
+  --animation-duration: 2s;
+  --animation-delay: 222ms;
+}
+.star:nth-child(8) {
+  --animation-duration: 2.4s;
+  --animation-delay: 111ms;
+}
+
+#planet_s {
+  opacity: 0;
+}
+#planet_m {
+  opacity: 0;
+}
+#planet_xl {
+  opacity: 0;
+}
+#satelite {
+  opacity: 0;
+}
+
+#display {
+  transform-origin: 30% 50%;
+  opacity: 0;
+  animation: blink 750ms ease-in-out 1s 5 alternate both;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes scale_from_left {
+  0% {
+    opacity: 0;
+  }
   100% {
-    fill: #64fcd9;
-    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes y-wobble {
+  0% {
+    opacity: 1;
+    transform: translate(var(--x-offset-1), var(--y-offset-1));
+  }
+  100% {
+    opacity: 1;
+    transform: translate(var(--x-offset-2), var(--y-offset-2));
   }
 }

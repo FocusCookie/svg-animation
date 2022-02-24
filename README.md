@@ -1,2 +1,2 @@
 # svg-fun
-Some SVG related tests. Animation etc.
+This is a test repo on how to animate SVG's with CSS animations.
